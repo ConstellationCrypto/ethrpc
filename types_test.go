@@ -77,7 +77,7 @@ func TestTransactionUnmarshal(t *testing.T) {
 
 	require.Nil(t, err)
 	require.Equal(t, "0x3003694478c108eaec173afcb55eafbb754a0b204567329f623438727ffa90d8", tx.BlockHash)
-	require.Equal(t, 537369, *tx.BlockNumber)
+	require.Equal(t, newBigInt("537369"), tx.BlockNumber)
 	require.Equal(t, "0x201354729f8d0f8b64e9a0c353c672c6a66b3857", tx.From)
 	require.Equal(t, 90000, tx.Gas)
 	require.Equal(t, *big.NewInt(20000000000), tx.GasPrice)

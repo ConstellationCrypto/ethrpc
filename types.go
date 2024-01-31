@@ -72,7 +72,7 @@ type Transaction struct {
 	Hash             string
 	Nonce            int
 	BlockHash        string
-	BlockNumber      *int
+	BlockNumber      big.Int
 	TransactionIndex *int
 	From             string
 	To               string
@@ -190,7 +190,7 @@ const (
 
 // Block - block object
 type Block struct {
-	Number           int
+	Number           big.Int
 	Hash             string
 	ParentHash       string
 	Nonce            string
@@ -280,7 +280,7 @@ type proxyBlock interface {
 }
 
 type proxyBlockWithTransactions struct {
-	Number           hexInt             `json:"number"`
+	Number           hexBig             `json:"number"`
 	Hash             string             `json:"hash"`
 	ParentHash       string             `json:"parentHash"`
 	Nonce            string             `json:"nonce"`
@@ -305,7 +305,7 @@ func (proxy *proxyBlockWithTransactions) toBlock() Block {
 }
 
 type proxyBlockWithoutTransactions struct {
-	Number           hexInt   `json:"number"`
+	Number           hexBig   `json:"number"`
 	Hash             string   `json:"hash"`
 	ParentHash       string   `json:"parentHash"`
 	Nonce            string   `json:"nonce"`
@@ -327,7 +327,7 @@ type proxyBlockWithoutTransactions struct {
 
 func (proxy *proxyBlockWithoutTransactions) toBlock() Block {
 	block := Block{
-		Number:           int(proxy.Number),
+		Number:           big.Int(proxy.Number),
 		Hash:             proxy.Hash,
 		ParentHash:       proxy.ParentHash,
 		Nonce:            proxy.Nonce,

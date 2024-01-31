@@ -655,7 +655,7 @@ func (s *EthRPCTestSuite) TestGetBlock() {
 		Hash:             "0xf519ca0e9ceeb0405dfeb95544179f557e3221213f07e33709af7ced60ab61b9",
 		Nonce:            10395,
 		BlockHash:        block.Hash,
-		BlockNumber:      &block.Number,
+		BlockNumber:      block.Number,
 		TransactionIndex: ptrInt(0),
 		From:             "0xa95350d70b18fa29f6b5eb8d627ceeeee499340d",
 		To:               "0xb595f3390fcec074237c8264b908fc73d4aedc93",
@@ -669,7 +669,7 @@ func (s *EthRPCTestSuite) TestGetBlock() {
 		Hash:             "0xa72743a3608e2ae7b3d1cc1f0e3ceed9a1c78d803eba5f28d5d6908adfaa211c",
 		Nonce:            450,
 		BlockHash:        block.Hash,
-		BlockNumber:      &block.Number,
+		BlockNumber:      block.Number,
 		TransactionIndex: ptrInt(1),
 		From:             "0x0f1b76410215ed963ea2c3d3eaddd4a56350b422",
 		To:               "0x8d12a197cb00d4747a1fe03395095ce2a5cc6819",
@@ -736,7 +736,7 @@ func (s *EthRPCTestSuite) TestGetBlock() {
 		Hash:             "0x160e19780a24f3d78492c7ac7228e0220d4b96878fec19daf182e1d8c4b3d94e",
 		Nonce:            0,
 		BlockHash:        "",
-		BlockNumber:      nil,
+		BlockNumber:      big.Int{},
 		TransactionIndex: nil,
 		From:             "",
 		To:               "",
@@ -920,7 +920,7 @@ func (s *EthRPCTestSuite) TestGetTransaction() {
 	s.Require().Equal("0x3068bb24a6c65a80eb350b89b2ef2f4d0605f59e5d07fd3467eb76511c4408e7", transaction.Hash)
 	s.Require().Equal(168, transaction.Nonce)
 	s.Require().Equal("0x8b0404b2e5173e7abdbfc98f521d50808486ccaff3cd0a6344e0bb6c7aa8cef0", transaction.BlockHash)
-	s.Require().Equal(4262381, *transaction.BlockNumber)
+	s.Require().Equal(newBigInt("4262381"), transaction.BlockNumber)
 	s.Require().Equal(152, *transaction.TransactionIndex)
 	s.Require().Equal("0xe3a7ca9d2306b0dc900ea618648bed9ec6cb1106", transaction.From)
 	s.Require().Equal("0x8d12a197cb00d4747a1fe03395095ce2a5cc6819", transaction.To)

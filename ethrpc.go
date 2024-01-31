@@ -239,13 +239,13 @@ func (rpc *EthRPC) EthAccounts() ([]string, error) {
 }
 
 // EthBlockNumber returns the number of most recent block.
-func (rpc *EthRPC) EthBlockNumber() (int, error) {
+func (rpc *EthRPC) EthBlockNumber() (big.Int, error) {
 	var response string
 	if err := rpc.call("eth_blockNumber", &response); err != nil {
-		return 0, err
+		return big.Int{}, err
 	}
 
-	return ParseInt(response)
+	return ParseBigInt(response)
 }
 
 // EthGetBalance returns the balance of the account of given address in wei.
