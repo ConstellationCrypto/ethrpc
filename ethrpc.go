@@ -409,6 +409,11 @@ func (rpc *EthRPC) EthGetBlockByNumber(number int, withTransactions bool) (*Bloc
 	return rpc.getBlock("eth_getBlockByNumber", withTransactions, IntToHex(number), withTransactions)
 }
 
+// EthGetBlockByTag returns information about a block by block tag.
+func (rpc *EthRPC) EthGetBlockByTag(blockTag BlockTag, withTransactions bool) (*Block, error) {
+	return rpc.getBlock("eth_getBlockByNumber", withTransactions, blockTag, withTransactions)
+}
+
 func (rpc *EthRPC) getTransaction(method string, params ...interface{}) (*Transaction, error) {
 	transaction := new(Transaction)
 

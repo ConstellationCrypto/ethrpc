@@ -1,4 +1,4 @@
-module github.com/onrik/ethrpc
+module github.com/ConstellationCrypto/ethrpc
 
 go 1.19
 
